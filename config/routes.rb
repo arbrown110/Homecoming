@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
+  #root 'sessions#home'
+
   
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+
+  #login route
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  
+  #logout route
+  delete '/logout' => 'sessions#destroy'
  
-  root 'sessions#home'
+  #OMNI/AUTH CALLBACK ROUTE
+
+  get '/auth/google_oauth2/callback' => 'sessions#google'
+
   resources :users 
   resources :schools
   resources :playlists

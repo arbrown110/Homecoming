@@ -34,7 +34,6 @@ Songs
 - artist
 - title
 
-Ratings
-- 
+
 
 
