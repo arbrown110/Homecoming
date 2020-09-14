@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #root 'sessions#home'
+  root 'sessions#home'
 
   
   get '/signup' => 'users#new'
