@@ -1,0 +1,18 @@
+<h1>Add a School</h1>
+
+<%= form_for(@school) do |s|%>
+
+ <%= s.label :name %>
+ <%= s.text_field :name %>
+ <br>
+ <br>
+ <%= s.label :city %>
+ <%= s.text_field :city %>
+ <br>
+ <br>
+ <%= s.label :state %>
+ <%= s.text_field :state %>
+ <br>
+ <br>
+ <%= s.submit %>
+<% end %>
