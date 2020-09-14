@@ -5,7 +5,7 @@ class UsersController < ApplicationController
  end
 
  def create
-    #redirect_if_not_signed_in
+    
    @user = User.new(user_params)
    if @user.save
     session[:user_id] = @user.id
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
  end
  
  def show
+  redirect_if_not_signed_in
   @user = User.find_by_id(params[:id])
   redirect_to '/' if !@user
  end

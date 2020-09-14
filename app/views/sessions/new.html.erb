@@ -1,0 +1,17 @@
+<h1>Login </h1>
+
+
+<%= flash[:message] if flash[:message]%>
+
+<%= form_for :user do |u| %>
+  <%= u.label :username %>
+  <%= u.text_field :username %>
+  <br>
+  <br>
+  <%= u.label :password %>
+  <%= u.password_field :password %>
+  <br>
+  <br>
+  <%= u.submit 'Submit' %>
+
+<% end %>
