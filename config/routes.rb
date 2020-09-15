@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'songs/artist'
+  get 'songs/tune'
+  get 'songs/playlist_id:integer'
   root 'sessions#home'
 
   

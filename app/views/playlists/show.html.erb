@@ -1,6 +1,6 @@
-<h1>Create Playlist</h1>
+<h1></h1>
 
-<%= flash[:message] if flash[:message]%>
+<h1>Recent Playlist</h1>
 
 <%= form_for(@playlist) do |p|%>
 
@@ -13,11 +13,11 @@
  <br>
  <br>
  <%= p.label :songs %>
- <%= p.text_area :songs, :rows => 10%>
+ <%= 
  <br>
  <br>
  <%= p.label :ratings %>
- <%= p.number_field :ratings, :max => 5%>
+ <%= p.number_field :ratings %>
  <br>
  <br>
  <%#= p.hidden_field :playlist_id %>

@@ -2,25 +2,3 @@
 
 
 
-<%= link_to "Create playlist", new_playlist_path%>
-<br>
- <br>
- <%= link_to "Edit playlist", edit_playlist_path %>
-<br>
- <%= link_to "See playlist", playlists_path %>
-<br>
-<br>
- <%= link_to "Edit School", edit_school_path %>
-<br>
- <br>
-<%= link_to "Add School", new_school_path%>
-<br>
- <br>
-<%= link_to "See all the Schools", schools_path%>
-<br>
-
-
-<br><br>
-<%= form_tag("/logout", method: 'delete') do %>
-<%= submit_tag "Logout" %>
-<% end %>
