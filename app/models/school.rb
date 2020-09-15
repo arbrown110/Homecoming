@@ -5,3 +5,6 @@ class School < ApplicationRecord
   has_many :sorted_schools, -> {order_by_school}, class_name: 'School'
   validates :name, :city, :state, presence: true
 end
+
+
+

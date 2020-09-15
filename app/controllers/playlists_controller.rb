@@ -2,13 +2,12 @@ class PlaylistsController < ApplicationController
 
 before_action :redirect_if_not_signed_in
 
- def show
-   @playlist = Playlist.find(params[:id])
- end
-
  def index
+  if params[:school_id] && @school = School.find_by_id(params[:school_id])
+    @playlists = @school.playlists
+  else
    @playlists = Playlist.all
-   
+  end
  end
 
  def new
@@ -21,18 +20,31 @@ before_action :redirect_if_not_signed_in
  end
   
  def create
-   @playlist= current_user.playlists.create(playlist_params)
+   @playlist = current_user.playlists.create(playlist_params)
    if @playlist.save
-   redirect_to playlists_path(@playlist)
+   redirect_to playlist_path(@playlist)
    else
-    @playlist.build_school unless @playlist.build_school
+    #@playlist.build_school unless @playlist.build_school
     render :new
    end
  end
-  
+
+ def show
+   @playlist = Playlist.find(params[:id])
+ end
+
+ def edit
+  @playlist = Playlist.find(params[:id])
+ end
+
+ def delete
+  @playlist = Playlist.find(params[:id])
+ end
+
+
  private
 
  def playlist_params
-  params.require(:playlist).permit(:title, :date, :ratings, songs_attributes: [ :artist, :tune ])
+  params.require(:playlist).permit(:user_id, :title, :date, :ratings, songs_attributes: [ :artist, :tune ])
  end
 end

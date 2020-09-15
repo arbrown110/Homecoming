@@ -1,18 +1,18 @@
-<h1></h1>
+<h1>Playlist</h1>
 
-<h1>Recent Playlist</h1>
 
-<p> <%= @playlist.title %></p>
-<p> <%= @playlist.date %></p>
 
-<p> 
-<ul>
+<h1><%= @playlist.title %></h1>
+<div><%= @playlist.date %></div>
+
+ 
+<h2>Songs:</h2>
 <% @playlist.songs.each do |jam| %>
-  <li><%= "#{jam.artist} - #{jam.tune}" %></li>
+  <li><%= link_to jam.artist, song_path(jam)%> - <%= link_to jam.tune, song_path(jam)%></li>
 <% end %>
-</ul>
-</p>
-<p> <%= @playlist.rating %></p>
+
+
+<div> <%= @playlist.rating %></div>
 
 <% if @playlist.user == current_user %>
   <%= link_to "Edit Playlist", edit_playlist_path(@playlist) %>

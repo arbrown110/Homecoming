@@ -18,8 +18,16 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback' => 'sessions#google'
 
   resources :users 
-  resources :schools
-  resources :playlists
+  resources :schools do
+   resources :playlists, only: [:new,:create,:index] #shallow routing
+  end
+  resources :playlists do
+    resource :songs, only: [:new,:create,:index]
+  end
+  resources :songs
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+

@@ -19,13 +19,13 @@
     <br>
     <%#= link_to "Edit playlist", edit_playlist_path %>
     <br>
-    <%#= link_to "See playlist", playlists_path %>
+    <%= link_to "See playlist", playlists_path %>
     <br>
     <%#= link_to "Edit School", edit_school_path %>
     <br>
     <%= link_to "Add School", new_school_path%>
     <br>
-    <%#= link_to "See all the Schools", schools_path%>
+    <%= link_to "See all the Schools", schools_path%>
     <br>
    <% else %>
     <%= link_to "Sign Up", signup_path %>
@@ -34,6 +34,7 @@
     <br>
    <% end %>
   </div>
+ 
     <%= yield %>
   </body>
 </html>

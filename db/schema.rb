@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_09_15_014847) do
 
   create_table "playlists", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.string "date"
     t.string "songs"

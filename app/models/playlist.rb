@@ -7,7 +7,7 @@ class Playlist < ApplicationRecord
  
   validates :title, :songs, :ratings, presence: true
   validates :title, uniqueness: true
-  validates :rating, numericality: { less_than_or_equal_to: 10, greater_than: 0,  only_integer: true }
+  validates :ratings, numericality: { less_than_or_equal_to: 10, greater_than: 0,  only_integer: true }
   validates :school_id, presence: true
   validates_associated :school
 
@@ -19,4 +19,7 @@ class Playlist < ApplicationRecord
   scope :order_by_name, -> {order(:name)}
 
 
+
 end
+
+
