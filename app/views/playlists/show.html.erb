@@ -2,25 +2,19 @@
 
 <h1>Recent Playlist</h1>
 
-<%= form_for(@playlist) do |p|%>
+<p> <%= @playlist.title %></p>
+<p> <%= @playlist.date %></p>
 
- <%= p.label :title %>
- <%= p.text_field :title %>
- <br>
- <br>
- <%= p.label :date %>
- <%= p.date_field :date %>
- <br>
- <br>
- <%= p.label :songs %>
- <%= 
- <br>
- <br>
- <%= p.label :ratings %>
- <%= p.number_field :ratings %>
- <br>
- <br>
- <%#= p.hidden_field :playlist_id %>
- <%= p.submit %>
+<p> 
+<ul>
+<% @playlist.songs.each do |jam| %>
+  <li><%= "#{jam.artist} - #{jam.tune}" %></li>
+<% end %>
+</ul>
+</p>
+<p> <%= @playlist.rating %></p>
 
+<% if @playlist.user == current_user %>
+  <%= link_to "Edit Playlist", edit_playlist_path(@playlist) %>
+  <%= link_to "Delete Playlist", playlist_path(@playlist), method: :delete  %>
 <% end %>

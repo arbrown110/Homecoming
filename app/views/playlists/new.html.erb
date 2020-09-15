@@ -4,23 +4,29 @@
 
 <%= form_for(@playlist) do |p|%>
 
- <%= p.label :title %>
+ <%= p.label :title, "Title" %>
  <%= p.text_field :title %>
  <br>
  <br>
- <%= p.label :date %>
+ <%= p.label :date, "What day is it?" %>
  <%= p.date_field :date %>
  <br>
  <br>
- <%= p.label :songs %>
- <%= p.text_area :songs, :rows => 10%>
+ <%= p.fields_for :songs do |jam| %>
+    <%= jam.label :artist %> 
+    <%= jam.text_field :artist %> -
+
+    <%= jam.label :tune %>
+    <%= jam.text_field :tune %>
+ <% end %>
  <br>
  <br>
- <%= p.label :ratings %>
- <%= p.number_field :ratings, :max => 5%>
+ <%= p.label :rating, "Rating from 1-5"%>
+ <%= p.number_field :rating, min: 0, max: 10%>
  <br>
  <br>
  <%#= p.hidden_field :playlist_id %>
  <%= p.submit %>
 
 <% end %>
+
