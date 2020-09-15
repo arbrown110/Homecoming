@@ -4,7 +4,8 @@ class CreateSchools < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :city
       t.string :state
-      t.belongs_to :user, null: false, foreign_key: true
+      t.integer :playlist_id
+      t.integer :user_id
 
       t.timestamps
     end

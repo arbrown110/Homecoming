@@ -10,8 +10,22 @@ class SchoolsController < ApplicationController
   @schools = School.all 
  end
 
- def show
+ def create
+    @school = School.create(school_params)
+    if school.save   
+    redirect_to schools_path(@school)
+    else
+    render :new
+    end
  end
 
+ def show
+    @school = School.find_by(id: params[:id])
+ end
 
+ private
+
+  def school_params
+   params.require(:school).permit(:name, :city, :state)
+  end
 end

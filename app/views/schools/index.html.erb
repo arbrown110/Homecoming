@@ -1,1 +1,12 @@
 <h1>All Schools</h1>
+
+<ul>
+<%= @schools.each do |sc|%>
+ <li>
+  <%= link_to sc.name, school_path(sc)%>
+  
+  </li>
+<% end %>
+</ul>
+
+<p>will put in number of playlists created for this school</p>

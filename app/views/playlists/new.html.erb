@@ -12,17 +12,19 @@
  <%= p.date_field :date %>
  <br>
  <br>
+ <p> Songs  </p>
  <%= p.fields_for :songs do |jam| %>
     <%= jam.label :artist %> 
-    <%= jam.text_field :artist %> -
-
-    <%= jam.label :tune %>
+    <%= jam.text_field :artist %> 
+   
+    <%= jam.label :tune, "Title" %>
     <%= jam.text_field :tune %>
+    <br>
  <% end %>
  <br>
  <br>
- <%= p.label :rating, "Rating from 1-5"%>
- <%= p.number_field :rating, min: 0, max: 10%>
+ <%= p.label :ratings, "Rating from 1-5"%>
+ <%= p.number_field :ratings, min: 0, max: 10%>
  <br>
  <br>
  <%#= p.hidden_field :playlist_id %>
