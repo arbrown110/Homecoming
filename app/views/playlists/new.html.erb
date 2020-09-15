@@ -1,9 +1,16 @@
+
+<%= if @school %>
+<h1>New Playlist for <%= @school.name %></h1>
+<% else %>
 <h1>Create Playlist</h1>
+<% end %>
 
 <%= flash[:message] if flash[:message]%>
 
-<%= form_for(@playlist) do |p|%>
 
+<%= form_for(@playlist,@school) do |p|%>
+ 
+ <br>
  <%= p.label :title, "Title" %>
  <%= p.text_field :title %>
  <br>
