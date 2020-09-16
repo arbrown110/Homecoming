@@ -1,16 +1,24 @@
 
-<%= if @school %>
+<% if @playlist.school %>
 <h1>New Playlist for <%= @school.name %></h1>
 <% else %>
 <h1>Create Playlist</h1>
 <% end %>
 
-<%= flash[:message] if flash[:message]%>
+ <%= render partial: "/layouts/error", locals: { object: @playlist } %>
 
 
-<%= form_for(@playlist,@school) do |p|%>
- 
- <br>
+<%= form_for([@playlist.school,@playlist]) do |p|%>
+
+   <% if !@playlist.school %>
+    <%= p.label :name %>
+    <%= p.collection_select :school_id, School.all, :id, :name %>
+   <% else %>
+    <%= p.hidden_field :school_id %>
+   <% end %>
+
+
+
  <%= p.label :title, "Title" %>
  <%= p.text_field :title %>
  <br>
@@ -31,7 +39,7 @@
  <br>
  <br>
  <%= p.label :ratings, "Rating from 1-5"%>
- <%= p.number_field :ratings, min: 0, max: 10%>
+ <%= p.number_field :ratings, min: 0, max: 5%>
  <br>
  <br>
  
@@ -39,3 +47,4 @@
 
 <% end %>
 
+<p> Get help on this page showing ArgumentError in Playlists#new First argument in form cannot contain nil or be empty #11</p>
