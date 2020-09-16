@@ -5,7 +5,7 @@ class Playlist < ApplicationRecord
   
   accepts_nested_attributes_for :songs
  
-  validates :title, :songs, :ratings, presence: true
+  validates :title, :ratings, presence: true
   validates :title, uniqueness: true
   validates :ratings, numericality: { less_than_or_equal_to: 10, greater_than: 0,  only_integer: true }
   validates :school_id, presence: true

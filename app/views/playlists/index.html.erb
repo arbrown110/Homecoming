@@ -1,3 +1,7 @@
 <h1>All Playlist</h1>
 
-<%#= School.playlist.all%>
+<% @playlists.each do |play| %>
+<div>
+<strong><%= play.title %></strong>
+</div>
+<% end %>

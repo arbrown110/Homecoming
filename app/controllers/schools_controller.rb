@@ -1,3 +1,5 @@
+require 'pry'
+
 class SchoolsController < ApplicationController
 
     before_action :redirect_if_not_signed_in
@@ -12,9 +14,11 @@ class SchoolsController < ApplicationController
 
  def create
     @school = School.create(school_params)
+#binding.pry    
     if @school.save   
     redirect_to schools_path(@school)
     else
+      flash[:message] = "This school already exist."
     render :new
     end
  end

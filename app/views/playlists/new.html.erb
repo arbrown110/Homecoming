@@ -1,12 +1,12 @@
 
+
 <% if @playlist.school %>
 <h1>New Playlist for <%= @school.name %></h1>
 <% else %>
 <h1>Create Playlist</h1>
 <% end %>
 
- <%= render partial: "/layouts/error", locals: { object: @playlist } %>
-
+<% puts "Playlist: #{@playlist}" %>
 
 <%= form_for([@playlist.school,@playlist]) do |p|%>
 
