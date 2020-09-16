@@ -1,7 +1,7 @@
 <h1>All Schools</h1>
 
 <div>
-<%= @schools.each do |sc|%>
+<% @schools.each do |sc|%>
  <li>
   <%= link_to sc.name, school_path(sc)%>
   </li>
