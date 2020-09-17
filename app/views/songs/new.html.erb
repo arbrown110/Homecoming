@@ -1,22 +1,23 @@
 <%= render 'layouts/styling' %>
 
-<h1> Add Songs for <%= @song.playlist.title %></h1>
 
-<%= form_for [@playlist, @song] do |j|%>
-  <%= j.hidden_field :playlist_id%>
-  <div>
+ <h1> Add Songs for <%= @song.playlist.title %></h1>
+
+ <%= form_for [@playlist, @song] do |j|%>
+   <%= j.hidden_field :playlist_id%>
+   <div>
     <%= j.label :artist, "Artist"%>
     <%= j.text_field :artist%>
-  </div>
-
-  <div>
+   </div>
+ 
+   <div>
     <%= j.label :tune, "Name of the Song"%>
     <%= j.text_field :tune%>
-  </div>
-  <br>
-  <%= f.submit %>
-<% end %>
-
+   </div>
+   <br>
+   <%= f.submit %>
+ <% end %>
+</div>
 
 
 

@@ -5,7 +5,7 @@
 <ul>
 <% @playlists.each do |play| %>
 <div>
-<strong><%= play.title %></strong>
+<li><strong><%= link_to play.title, playlist_path(play)%></strong></li>
 </div>
 <% end %>
 

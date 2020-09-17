@@ -1,9 +1,10 @@
 <%= render 'layouts/styling' %>
+<div style="text-align: center;">
 
 
 <h1>All Schools</h1>
 
-<div>
+<br>
 <% @schools.each do |sc|%>
  <li>
   <%= link_to sc.name, school_path(sc)%>

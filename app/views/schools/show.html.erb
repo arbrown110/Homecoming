@@ -1,15 +1,16 @@
 <%= render 'layouts/styling' %>
+<div style="text-align: center;">
 
 <h1><%= @school.name %></h1>
 
-<div><%= @school.city%>, <%= @school.state%></div>
+<%= @school.city%>, <%= @school.state%>
 
 <p> <%= link_to "See All Playlists", school_playlists_path(@school)%> 
 <p> <%= link_to "Add a Playlist", new_school_playlist_path(@school)%> 
 
 <h2>Playlist Titles:</h2>
 <% @school.playlists.each do |h|%>
-<li><strong><%= link_to h.title, playlist_path(h)%></li>
+<li><strong><%= link_to h.title, school_playlist_path(@school h)%></li>
 <% end %>
-
+</div>
 

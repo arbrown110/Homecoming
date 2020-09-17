@@ -1,9 +1,9 @@
 <%= render 'layouts/styling' %>
-
+<div style="text-align: center;">
 <h1>Songs for <%= @playlist.title%></h1>
 <ul>
 <% @songs.each do |s|%>
 <li><%= s.artist%>- <%= s.tune%> </li>
 <% end %>
-
 </ul>
+</div>
