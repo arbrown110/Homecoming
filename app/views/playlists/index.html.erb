@@ -1,7 +1,12 @@
+<%= render 'layouts/styling' %>
+
 <h1>All Playlist</h1>
 
+<ul>
 <% @playlists.each do |play| %>
 <div>
 <strong><%= play.title %></strong>
 </div>
 <% end %>
+
+</ul>

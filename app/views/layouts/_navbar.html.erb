@@ -1,0 +1,23 @@
+<div class="topnav">
+
+<nav>
+    <ul>
+    <h1>
+    <div style="text-align: center;">
+    <%= link_to "Home", root_path %> 
+            
+     <% if logged_in? %>
+      <%= link_to "Logout", logout_path, method: "delete"%>
+      <%= link_to "See playlist", playlists_path %>
+      <%= link_to "Add School", new_school_path%>
+      <%= link_to "See all the Schools", schools_path%>
+     <% else %>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Log In", login_path %>
+
+     <% end %>
+        </div>
+    </h1>
+    </ul>
+</nav>
+</div>

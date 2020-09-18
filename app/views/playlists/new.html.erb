@@ -1,4 +1,6 @@
+<%= render 'layouts/styling' %>
 
+<%= render partial: "layouts/errors", locals: {object: @playlist} %>
 
 <% if @playlist.school %>
 <h1>New Playlist for <%= @school.name %></h1>
@@ -47,4 +49,3 @@
 
 <% end %>
 
-<p> Get help on this page showing ArgumentError in Playlists#new First argument in form cannot contain nil or be empty #11</p>
