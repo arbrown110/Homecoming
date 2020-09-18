@@ -2,6 +2,7 @@
 <div style="text-align: center;">
 
 <h1>Add a School</h1>
+<%= render partial: "layouts/errors", locals: {object: @school} %>
 
 <%= form_for(@school) do |s|%>
 

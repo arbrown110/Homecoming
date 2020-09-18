@@ -8,6 +8,8 @@
 <h1>Create Playlist</h1>
 <% end %>
 
+<%= render partial: "layouts/errors", locals: {object: @playlist} %>
+
 <% puts "Playlist: #{@playlist}" %>
 
  <%= render 'form' %>
