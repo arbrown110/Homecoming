@@ -6,9 +6,10 @@ before_action :redirect_if_not_signed_in
 
  def index
   if params[:school_id] && @school = School.find_by_id(params[:school_id])
-    @playlists = @school.playlists
+    @playlists = @school.playlists.alpha
   else
-   @playlists = Playlist.all
+    @error = "The School isn't created" if params[:school_id]
+   @playlists = Playlist.alpha
   end
  end
 
@@ -28,8 +29,8 @@ before_action :redirect_if_not_signed_in
    @playlist = current_user.playlists.build(playlist_params)
    @playlist.songs.each do |song|
     song.user = current_user
+    @playlist.save
    end
-   #binding.pry
    if @playlist.save
    redirect_to playlist_path(@playlist)
    else

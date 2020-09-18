@@ -1,0 +1,39 @@
+<%= form_for([@playlist.school, @playlist]) do |p|%>
+
+   <% if !@playlist.school %>
+    <%= p.label :name %>
+    <%= p.collection_select :school_id, School.all, :id, :name %>
+   <% else %>
+    <%= p.hidden_field :school_id %>
+   <% end %>
+
+
+
+ <%= p.label :title, "Title" %>
+ <%= p.text_field :title %>
+ <br>
+ <br>
+ <%= p.label :date, "What day is it?" %>
+ <%= p.date_field :date %>
+ <br>
+ <br>
+ <p> Songs  </p>
+ <%= p.fields_for :songs do |jam| %>
+    <%= jam.label :artist %> 
+    <%= jam.text_field :artist %> 
+   
+    <%= jam.label :tune, "Title" %>
+    <%= jam.text_field :tune %>
+    <br>
+ <% end %>
+ <br>
+ <br>
+ <%= p.label :ratings, "Rating from 1-5"%>
+ <%= p.number_field :ratings, min: 0, max: 5%>
+ <br>
+ <br>
+ 
+ <%= p.submit %>
+
+<% end %>
+

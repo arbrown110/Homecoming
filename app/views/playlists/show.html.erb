@@ -1,5 +1,5 @@
 <%= render 'layouts/styling' %>
-<div style="text-align: center;">
+
 
 <h1><%= @playlist.school.name %>'s Playlist</h1>
 
@@ -11,7 +11,7 @@
  
 <h2>Songs:</h2>
 <% @playlist.songs.each do |jam| %>
-  <li><%= jam.artist%> - <%=  jam.tune%></li>
+  <li><%= jam.artist%> -<%=  jam.tune%></li>
 <% end %>
 
 <div><strong><h3>Rating :</h3> <%= @playlist.ratings%></strong></div>

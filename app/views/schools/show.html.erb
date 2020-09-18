@@ -10,7 +10,7 @@
 
 <h2>Playlist Titles:</h2>
 <% @school.playlists.each do |h|%>
-<li><strong><%= link_to h.title, school_playlist_path(@school h)%></li>
+<li><strong><%= link_to h.title, school_playlists_path(@school, h)%></li>
 <% end %>
 </div>
 

@@ -11,13 +11,13 @@ class Playlist < ApplicationRecord
   validates :school_id, presence: true
   validates_associated :school
 
+  scope :alpha, -> {order(:name) }
+
+
   def school_attributes=(attributes)
     school = School.find_or_create_by(attributes)
     self.school = school if school.valid? || !self.school
   end
-
-  scope :order_by_name, -> {order(:name)}
-
 
 
 end
