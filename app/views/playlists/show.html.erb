@@ -1,7 +1,7 @@
 <%= render 'layouts/styling' %>
+<div style="text-align: center;">
 
-
-<h1>Playlist</h1>
+<h1><%= @playlist.school.name %>'s Playlist</h1>
 
 
 
@@ -14,10 +14,12 @@
   <li><%= jam.artist%> - <%=  jam.tune%></li>
 <% end %>
 
-
-<div><strong>Rating :</strong> <%= @playlist.ratings%></div>
-
+<div><strong><h3>Rating :</h3> <%= @playlist.ratings%></strong></div>
+<br>
+<br>
 <% if @playlist.user == current_user %>
   <%= link_to "Edit Playlist", edit_playlist_path(@playlist) %>
   <%= link_to "Delete Playlist", playlist_path(@playlist), method: :delete  %>
 <% end %>
+
+</div>

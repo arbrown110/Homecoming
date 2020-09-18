@@ -57,7 +57,7 @@ before_action :redirect_if_not_signed_in
 
  def delete
   collect_playlist
-  @playllist.destroy
+  @playllists.destroy
   redirect_to playlists_path
  end
 
