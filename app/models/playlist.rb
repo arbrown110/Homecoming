@@ -7,16 +7,20 @@ class Playlist < ApplicationRecord
  
   validates :title, :ratings, presence: true
   validates :title, uniqueness: true
-  validates :ratings, numericality: { less_than_or_equal_to: 10, greater_than: 0,  only_integer: true }
+  validates :ratings, numericality: { less_than_or_equal_to: 5, greater_than: 0,  only_integer: true }
   validates :school_id, presence: true
   validates_associated :school
 
   scope :alpha, -> {order(:name) }
 
 
-  def school_attributes=(attributes)
-    school = School.find_or_create_by(attributes)
-    self.school = school if school.valid? || !self.school
+  def Limited
+    today_limits = user.playlists.select do |c|
+      c.created_at.try(:to_date) == Date.today
+    end
+    if today_limits.size > 2
+    errors.add(:playlist_id, " can't be created past 2 daily. ")
+    end
   end
 
 
