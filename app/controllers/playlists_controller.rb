@@ -44,7 +44,7 @@ before_action :redirect_if_not_signed_in, :current_user
  end
 
  def edit
-  collect_playlist
+  collect_playlist_alert
  end
 
  def update
@@ -67,7 +67,7 @@ before_action :redirect_if_not_signed_in, :current_user
 
  private
 
- def collect_playlist
+ def collect_playlist_alert
   @playlist = Playlist.find(params[:id])
     if !@playlist || @playlist.user != current_user
       flash[:message] = "This doesn't belong to you."
@@ -75,6 +75,10 @@ before_action :redirect_if_not_signed_in, :current_user
     end
  end
 
+ def collect_playlist
+  @playlist = Playlist.find_by(id: params[:id])
+  redirect_to playlists_path 
+ end
 
 
  def playlist_params
