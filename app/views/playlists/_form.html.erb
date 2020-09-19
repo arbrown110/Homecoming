@@ -1,10 +1,11 @@
-<%= form_for(@playlist.school, @playlist) do |p|%>
 
-   <% if !@playlist.school %>
-    <%= p.label :name %>
+
+   <% if @playlist.school %>
+   <%= p.hidden_field :school_id %>
+  <% else %>
+    <%= p.label :school_id, "Find your School" %>
     <%= p.collection_select :school_id, School.all, :id, :name %>
-   <% else %>
-    <%= p.hidden_field :school_id %>
+  
    <% end %>
 
 
@@ -14,7 +15,7 @@
  <br>
  <br>
  <%= p.label :date, "What day is it?" %>
- <%= p.date_field :date %>
+ <%= p.date_field :date, {order: [:month, :day, :year], date_separator: "/", prompt: { month: 'mm', day: 'dd', year: 'yyyy'}, }%>
  <br>
  <br>
  <p> Songs  </p>
@@ -31,9 +32,9 @@
  <%= p.label :ratings, "Rating from 1-5"%>
  <%= p.number_field :ratings, min: 0, max: 5%>
  <br>
+
  <br>
  
- <%= p.submit %>
+ 
 
-<% end %>
 

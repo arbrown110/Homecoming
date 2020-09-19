@@ -19,7 +19,7 @@
 <br>
 <% if @playlist.user == current_user %>
   <%= link_to "Edit Playlist", edit_playlist_path(@playlist) %>
-  <%= link_to "Delete Playlist", playlist_path(@playlist), method: :delete  %>
+  <%= button_to "Delete Playlist", playlist_path(@playlist), method: :delete  %>
 <% end %>
 
 </div>

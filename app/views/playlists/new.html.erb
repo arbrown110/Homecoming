@@ -10,6 +10,14 @@
 
 <%= render partial: "layouts/errors", locals: {object: @playlist} %>
 
+
 <% puts "Playlist: #{@playlist}" %>
 
- <%= render 'form' %>
+<%= form_for(@playlist) do |p|%>
+
+ <%= render partial: 'playlists/form', locals: {p: p} %>
+
+ <%= p.hidden_field :user_id, :value => current_user.id %>
+
+ <%= p.submit %>
+<% end %>

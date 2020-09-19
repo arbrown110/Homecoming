@@ -3,6 +3,12 @@
 
 
 <h1>Edit Playlist</h1>
-<%= render partial: "layouts/errors", locals: {object: @playlist} %>
 
- <%= render 'form' %>
+<%= render partial: "layouts/errors", locals: {object: @playlist} %>
+<%= form_for(@playlist) do |p|%>
+
+  <%= render partial: 'playlists/form', locals: {p: p} %>
+
+
+<%= p.submit %>
+<% end %>

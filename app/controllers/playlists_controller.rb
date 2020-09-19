@@ -2,7 +2,8 @@ require 'pry'
 
 class PlaylistsController < ApplicationController
 
-before_action :redirect_if_not_signed_in
+before_action :redirect_if_not_signed_in, :current_user
+
 
  def index
   if params[:school_id] && @school = School.find_by_id(params[:school_id])
@@ -47,8 +48,9 @@ before_action :redirect_if_not_signed_in
  end
 
  def update
-  if collect_playlist
-    @playlist.update(playlist_params)
+#  binding.pry
+   collect_playlist
+  if  @playlist.update(playlist_params) && current_user.id == @playlist.user.id
     redirect_to playlist_path(@playlist)
   else 
     render :edit
@@ -56,9 +58,9 @@ before_action :redirect_if_not_signed_in
  end
 
 
- def delete
+ def destroy
   collect_playlist
-  @playllists.destroy
+  @playlist.destroy
   redirect_to playlists_path
  end
 
@@ -67,13 +69,16 @@ before_action :redirect_if_not_signed_in
 
  def collect_playlist
   @playlist = Playlist.find(params[:id])
-  if !@playlist
-    redirect_to playlists_path
-  end
+    if !@playlist || @playlist.user != current_user
+      flash[:message] = " This is doesn't belong to you."
+      redirect_to playlists_path
+    end
+    redirect_to '/'
  end
 
 
+
  def playlist_params
-  params.require(:playlist).permit(:user_id, :school_id, :title, :date, :ratings, songs_attributes: [ :artist, :tune ])
+  params.require(:playlist).permit(:user_id, :school_id, :title, :date, :ratings, songs_attributes: [ :id, :artist, :tune])
  end
 end

@@ -2,7 +2,8 @@ require 'pry'
 
 class SchoolsController < ApplicationController
 
-    before_action :redirect_if_not_signed_in
+    before_action :redirect_if_not_signed_in, :current_user
+    
 
  def new
  @school = School.new
