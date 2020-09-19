@@ -70,10 +70,9 @@ before_action :redirect_if_not_signed_in, :current_user
  def collect_playlist
   @playlist = Playlist.find(params[:id])
     if !@playlist || @playlist.user != current_user
-      flash[:message] = " This is doesn't belong to you."
-      redirect_to playlists_path
+      flash[:message] = "This doesn't belong to you."
+      redirect_to playlists_path 
     end
-    redirect_to '/'
  end
 
 
