@@ -2,7 +2,7 @@ require 'pry'
 
 class PlaylistsController < ApplicationController
 
-before_action :redirect_if_not_signed_in, :current_user
+before_action :redirect_if_not_signed_in, :current_user, :stored_playlist, only:[:show, :edit, :update]
 
 
  def index
@@ -40,21 +40,22 @@ before_action :redirect_if_not_signed_in, :current_user
  end
 
  def show
-  collect_playlist
+  #collect_playlist
  end
 
  def edit
+
   collect_playlist_alert
  end
 
  def update
-#  binding.pry
-   collect_playlist
-  if  @playlist.update(playlist_params) && current_user.id == @playlist.user.id
-    redirect_to playlist_path(@playlist)
-  else 
+
+ if @playlist.update(playlist_params)
+  redirect_to playlist_path(@playlist)
+  else
     render :edit
   end
+
  end
 
 
@@ -68,20 +69,22 @@ before_action :redirect_if_not_signed_in, :current_user
  private
 
  def collect_playlist_alert
-  @playlist = Playlist.find(params[:id])
     if !@playlist || @playlist.user != current_user
       flash[:message] = "This doesn't belong to you."
-      redirect_to playlists_path 
+      redirect_to playlist_path 
+    else
+      redirect_to playlists_path
     end
  end
 
- def collect_playlist
+ def stored_playlist
   @playlist = Playlist.find_by(id: params[:id])
-  redirect_to playlists_path 
+  redirect_to playlists_path if !@playlist
  end
 
+ 
 
  def playlist_params
-  params.require(:playlist).permit(:user_id, :school_id, :title, :date, :ratings, songs_attributes: [ :id, :artist, :tune])
+  params.require(:playlist).permit(:user_id, :school_id, :title, :date, :events, songs_attributes: [ :id, :artist, :tune])
  end
 end

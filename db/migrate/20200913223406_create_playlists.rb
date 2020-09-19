@@ -5,7 +5,7 @@ class CreatePlaylists < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :date
       t.string :songs
-      t.integer :ratings
+      t.integer :events
       t.integer :school_id
       t.integer :song_id
 
