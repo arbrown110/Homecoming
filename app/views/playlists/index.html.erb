@@ -5,7 +5,8 @@
 <ul>
 <% @playlists.each do |play| %>
 <div>
-<li><strong><%= link_to play.title, playlist_path(play)%></strong></li>
+<li><strong><%= link_to play.title, playlist_path(play)%>- <%= play.events %></strong></li>
+
 </div>
 <% end %>
 

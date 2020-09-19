@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback' => 'sessions#google'
 
+  delete '/schools/:id' => 'schools#destroy'
+
   resources :users 
   resources :schools do
    resources :playlists, only: [:new,:create,:index] #shallow routing

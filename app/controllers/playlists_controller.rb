@@ -2,7 +2,7 @@ require 'pry'
 
 class PlaylistsController < ApplicationController
 
-before_action :redirect_if_not_signed_in, :current_user, :stored_playlist, only:[:show, :edit, :update]
+before_action :redirect_if_not_signed_in, :current_user, :stored_playlist, only:[:show, :edit, :update, :delete]
 
 
  def index
@@ -60,8 +60,14 @@ before_action :redirect_if_not_signed_in, :current_user, :stored_playlist, only:
 
 
  def destroy
-  @playlist.destroy
-  redirect_to playlists_path
+   @playlist = Playlist.find(params[:id])
+  if @current_user.id == @playlist.user_id
+   @playlist.destroy
+   redirect_to playlists_path
+  else
+   flash[:message] = "Sorry, you did not create this"
+   redirect_to '/playlists'
+  end
  end
 
 

@@ -19,7 +19,6 @@ class SchoolsController < ApplicationController
     if @school.save   
     redirect_to schools_path(@school)
     else
-      flash[:message] = "This school already exist."
     render :new
     end
  end
@@ -27,6 +26,18 @@ class SchoolsController < ApplicationController
  def show
     @school = School.find_by(id: params[:id])
  end
+
+ def destroy
+   @school = School.find(params[:id]) 
+  if @current_user.id == @school.user_id
+   @school.destroy
+   redirect_to schools_path
+  else
+   flash[:message] = "Sorry, you did not create this"
+   redirect_to '/schools'
+  end
+ end
+
 
  private
 

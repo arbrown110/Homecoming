@@ -2,11 +2,7 @@
 
 
 
-<% if @playlist.school %>
-<h1>New Playlist for <%= @playlist.school.name %></h1>
-<% else %>
-<h1>Create Playlist</h1>
-<% end %>
+
 
 <%= render partial: "layouts/errors", locals: {object: @playlist} %>
 

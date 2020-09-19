@@ -2,6 +2,7 @@
 
    <% if @playlist.school %>
    <%= p.hidden_field :school_id %>
+   
   <% else %>
     <%= p.label :school_id, "Find your School" %>
     <%= p.collection_select :school_id, School.all, :id, :name %>
