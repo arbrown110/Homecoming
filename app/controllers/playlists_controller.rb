@@ -44,8 +44,8 @@ before_action :redirect_if_not_signed_in, :current_user, :stored_playlist, only:
  end
 
  def edit
-
   collect_playlist_alert
+  
  end
 
  def update
@@ -60,7 +60,6 @@ before_action :redirect_if_not_signed_in, :current_user, :stored_playlist, only:
 
 
  def destroy
-  collect_playlist
   @playlist.destroy
   redirect_to playlists_path
  end
@@ -73,7 +72,7 @@ before_action :redirect_if_not_signed_in, :current_user, :stored_playlist, only:
       flash[:message] = "This doesn't belong to you."
       redirect_to playlist_path 
     else
-      redirect_to playlists_path
+      render :edit
     end
  end
 

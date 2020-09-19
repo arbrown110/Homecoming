@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_184517) do
     t.string "title"
     t.string "date"
     t.string "songs"
-    t.integer "events"
+    t.string "events"
     t.integer "school_id"
     t.integer "song_id"
     t.datetime "created_at", precision: 6, null: false
