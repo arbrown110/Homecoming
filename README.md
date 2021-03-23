@@ -1,5 +1,5 @@
 # HomeComing 
-HomeComing is a way to pay homage on a small scale to the homecoming season for Colleges and Universities. Users are able to represent their school and add a soundtrack to match their Homecoming mood. T
+HomeComing is a way to pay homage on a small scale to the homecoming season for Colleges and Universities. Users are able to represent their school and add a soundtrack to match their Homecoming mood. 
 
 ## General Information
 
